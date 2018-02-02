@@ -4,24 +4,24 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class PropertiesBean {
 
-	private SimpleStringProperty key;
-	private SimpleStringProperty value;
+	private final SimpleStringProperty key;
+	private final SimpleStringProperty value;
 	
 	public PropertiesBean(String key, String value) {
 		this.key = new SimpleStringProperty(key);
 		this.value = new SimpleStringProperty(value);
 	}
 	
-	public SimpleStringProperty getKey() {
-		return key;
+	public String getKey() {
+		return key.get();
 	}
-	public void setKey(SimpleStringProperty key) {
-		this.key = key;
+	public void setKey(String t_key) {
+		key.set(t_key);;
 	}
-	public SimpleStringProperty getValue() {
-		return value;
+	public String getValue() {
+		return value.get();
 	}
-	public void setValue(SimpleStringProperty value) {
-		this.value = value;
+	public void setValue(String t_value) {
+		value.set(t_value);;
 	}
 }

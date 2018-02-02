@@ -62,8 +62,6 @@ public class MainController {
 
 	@FXML
 	public void mouseClick(MouseEvent event) {
-
-		System.out.println();
 		
 		if (main_left_tree.getSelectionModel().getSelectedItem() == null) {
 			hideAllMenuItem();
@@ -74,7 +72,6 @@ public class MainController {
 			}
 		}
 
-		//main_left_tree.getSelectionModel().clearSelection();
 	}
 
 	private void showAllMenuItem() {
@@ -95,17 +92,26 @@ public class MainController {
 		Parent tab_root;
 		
 		try {
-			tab_root = FXMLLoader.load(getClass().getResource("../ui/MainAddNode.fxml"));
+			//tab_root = FXMLLoader.load(getClass().getResource("../ui/MainAddNode.fxml"));
+			
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../ui/MainAddNode.fxml")); 
+			tab_root = fxmlLoader.load();
+			
+			
 			tab_add.setContent(tab_root);
 			tab_add.setText("test");
 			tab_add.setClosable(true);
+			
+			MainAddNodeController mainController = fxmlLoader.getController();
+			mainController.init();
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
 		main_center_tabpane.setTabClosingPolicy(TabPane.TabClosingPolicy.ALL_TABS);
-
 		main_center_tabpane.getTabs().add(tab_add);
 		main_center_tabpane.getSelectionModel().selectLast();
+		
 	}
 }
